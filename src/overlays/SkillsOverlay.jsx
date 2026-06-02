@@ -1,4 +1,5 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
+import gsap from 'gsap'
 import '../App.css'
 import ExitButton from '../ui/ExitButton'
 
@@ -14,6 +15,44 @@ const cssCode = `.hero {
 const jsCode = `const cube = new THREE
   .BoxGeometry()
 scene.add(cube)`
+
+const frameworks = [
+  {
+    name: 'React',
+    logo: './src/icons/react_light.svg',
+    overlayLogo: './src/icons/react_light.svg',
+    description: 'Library JavaScript pour construire des interfaces utilisateur avec des composants.',
+    large: false
+  },
+  {
+    name: 'Three.js',
+    overlayLogo: './src/icons/threejs-light.svg',
+    logo: './src/icons/threejs-dark.svg',
+    description: 'Library 3D pour le web, scènes, géométries, shaders et WebGL simplifié.',
+    large: true
+  },
+  {
+    name: 'Tailwind',
+    overlayLogo: './src/icons/tailwindcss.svg',
+    logo: './src/icons/tailwindcss.svg',
+    description: 'Framework CSS utility-first pour styliser rapidement sans quitter le HTML.',
+    large: false
+  },
+  {
+    name: 'Chart.js',
+    overlayLogo: './src/icons/chartjs.svg',
+    logo: './src/icons/chartjs.svg',
+    description: 'Library de visualisation de donnéeset création de graphiques interactifs et configurables.',
+    large: false
+  },
+  {
+    name: 'Bootstrap',
+    overlayLogo: './src/icons/bootstrap.svg',
+    logo: './src/icons/bootstrap.svg',
+    description: 'Framework CSS pour des interfaces responsives avec des composants prêts à l\'emploi.',
+    large: false
+  }
+]
 
 function Terminal({ code }) {
   const [displayed, setDisplayed] = useState(code)
@@ -48,7 +87,15 @@ function Terminal({ code }) {
 
 function SkillsOverlay({ activeOverlay, setActiveOverlay }) {
   const [activeCategory, setActiveCategory] = useState('Languages')
+  const [activeFramework, setActiveFramework] = useState(null)
 
+
+  useEffect(() => {
+    gsap.fromTo('.skills-content',
+      { opacity: 0 },
+      { opacity: 1, duration: 0.3 }
+    )
+  }, [activeCategory])
   if(activeOverlay !== 'skills') return null
 
   return (
@@ -56,13 +103,14 @@ function SkillsOverlay({ activeOverlay, setActiveOverlay }) {
       <div className="skills-container">
         <div className="skills-menu">
           <ul>
-            <li className={activeCategory === 'Domains' ? 'active' : ''} onClick={() => setActiveCategory('Domains')}>Domains</li>
+            <li className={activeCategory === 'Domains' ? 'active' : ''} onClick={() => {setActiveCategory('Domains')}}>Domains</li>
             <li className={activeCategory === 'Languages' ? 'active' : ''} onClick={() => setActiveCategory('Languages')}>Languages</li>
             <li className={activeCategory === 'Frameworks' ? 'active' : ''} onClick={() => setActiveCategory('Frameworks')}>Frameworks</li>
             <li className={activeCategory === 'Tools' ? 'active' : ''} onClick={() => setActiveCategory('Tools')}>Tools</li>
           </ul>
         </div>
         <div className="skills-content">
+
           {activeCategory === 'Languages' && (
             <div className="languages-content">
               <div className="lang-row">
@@ -79,12 +127,36 @@ function SkillsOverlay({ activeOverlay, setActiveOverlay }) {
               </div>
             </div>
           )}
-          {activeCategory === 'Frameworks' && <div className="frameworks-content">Frameworks</div>}
+
+          {activeCategory === 'Frameworks' && (
+            <div className="frameworks-content">
+              <div className="frameworks-grid">
+                {frameworks.map((framework) => (
+                  <div
+                    key={framework.name}
+                    className={`icon-frameworks ${framework.large ? 'large' : ''}`}
+                    onClick={() => setActiveFramework(framework)}
+                  >
+                    <img src={framework.logo} alt={`Logo ${framework.name}`}/>
+                  </div>
+                ))}
+              </div>
+
+              {activeFramework && (
+                <div className="framework-overlay">
+                  <img src={activeFramework.overlayLogo} alt={activeFramework.name}/>                 
+                  <p>{activeFramework.description}</p>
+                  <button onClick={() => setActiveFramework(null)}>✕</button>
+                </div>
+              )}
+            </div>
+          )}
+
           {activeCategory === 'Tools' && <div className="tools-content">Tools</div>}
+
           {activeCategory === 'Domains' && (
             <div className="domains-content">
               <div className="domains-grid">
-
                 <div className="domain-col">
                   <span className="index-domain">01</span>
                   <div className="domain-name">Web Dev</div>
@@ -93,7 +165,6 @@ function SkillsOverlay({ activeOverlay, setActiveOverlay }) {
                     <div className="card-desc">I build fast, accessible and modern web experiences.</div>
                   </div>
                 </div>
-
                 <div className="domain-col">
                   <span className="index-domain">02</span>
                   <div className="domain-name">Graphic Design</div>
@@ -102,7 +173,6 @@ function SkillsOverlay({ activeOverlay, setActiveOverlay }) {
                     <div className="card-desc">I create visual identities and editorial layouts.</div>
                   </div>
                 </div>
-
                 <div className="domain-col">
                   <span className="index-domain">03</span>
                   <div className="domain-name">UX / UI</div>
@@ -111,7 +181,6 @@ function SkillsOverlay({ activeOverlay, setActiveOverlay }) {
                     <div className="card-desc">I design intuitive and beautiful user interfaces.</div>
                   </div>
                 </div>
-
                 <div className="domain-col">
                   <span className="index-domain">04</span>
                   <div className="domain-name">Creative Dev</div>
@@ -120,10 +189,10 @@ function SkillsOverlay({ activeOverlay, setActiveOverlay }) {
                     <div className="card-desc">I create immersive 3D and interactive experiences.</div>
                   </div>
                 </div>
-
               </div>
             </div>
           )}
+
         </div>
         <ExitButton setActiveOverlay={setActiveOverlay}/>
       </div>

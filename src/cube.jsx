@@ -169,6 +169,8 @@ const Scene = ({ setActiveOverlay }) => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
     const tick = () => {
+      mesh.rotation.y += 0.003
+      mesh.rotation.x += 0.001
       controls.update()
       renderer.render(scene, camera)
       window.requestAnimationFrame(tick)
