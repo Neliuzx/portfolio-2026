@@ -8,6 +8,9 @@ html,
 body
 {
     overflow: hidden;
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    font-style: normal;
     
 }
 .webgl {
@@ -29,7 +32,7 @@ body
   color: #000;
   gap: 8px;
   font-family: "Anton", sans-serif;
-  font-weight: 100;
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -136,4 +139,282 @@ body
   height: 100%;
   flex: 1;
   background: #000;
+}
+.projects-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #EDEDED;
+  z-index: 50;
+  display: flex;
+  overflow-x: scroll;
+  align-items: center;
+  scroll-snap-type: x mandatory;
+  padding: 0 calc(50vw - 35vw);
+}
+
+.project-slide {
+  min-width: 70vw;
+  height: 70vh;
+  margin: auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: none;
+  scroll-snap-align: center;
+}
+.scroll-indicator {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 60;
+  width: 300px;
+}
+.scroll-tick {
+  color: #000;
+  font-size: 12px;
+  opacity: 0.3;
+}
+
+.scroll-thumb {
+  position: absolute;
+  width: 32px;
+  height: 20px;
+  border: 1.5px solid #000;
+  left: 0;
+  transition: left 0.1s;
+}
+
+.exit-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 60;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #000;
+  width: 40px;
+  cursor: pointer;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exit-button:hover {
+  opacity: 0.5;
+}
+
+.skills-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  gap: 0;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: #EDEDED;
+  z-index: 50;
+  display: grid;
+  grid-template-columns: 35% 1fr;
+}
+
+.skills-menu {
+  grid-column: 1/2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skills-menu ul {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  list-style: none;
+  font-size: 80px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border-right: 1px solid #1a1a1a;
+}
+
+.skills-menu li {
+  transition: all 0.1s ease-in-out;
+  padding-left: 50px;
+  cursor: pointer;
+}
+
+
+.skills-menu li:hover,
+.skills-menu li.active{
+  color: #fff;
+  background-color: #1a1a1a;
+  transition: all 0.1s ease-in-out;
+}
+
+.skills-content {
+  grid-column: 2/3;
+  display: flex;
+  padding: 0;
+  overflow: hidden;
+  margin: 0;
+}
+
+
+
+.languages-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 40px;
+  width: 100%;
+  align-self: center;
+}
+
+.lang-row {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.lang-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.lang-logo {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.lang-terminal {
+  background: #1a1a1a;
+  border-radius: 8px;
+  flex: 1;
+  cursor: pointer;
+}
+
+.terminal-header {
+  display: flex;
+  gap: 6px;
+  padding: 10px 12px 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot.red { background: #ff5f57; }
+.dot.yellow { background: #febc2e; }
+.dot.green { background: #28c840; }
+
+.terminal-code {
+  padding: 8px 14px 14px;
+  font-family: monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #ccc;
+  min-height: 60px;
+}
+
+.domains-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.domains-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: 100%;
+  width: 100%;
+  align-self: stretch;
+  position: relative;
+}
+
+
+.domain-name {
+  writing-mode: vertical-rl;
+  font-size: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.domain-col {
+  border-right: 1px solid #1a1a1a;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+
+}
+
+.domain-col:last-child {
+  border-right: none;
+}
+
+.domain-name {
+  writing-mode: vertical-rl;
+  font-size: 90px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  transition: opacity 0.2s;
+}
+
+.domain-col:hover {
+  color: #fff;
+  background-color: #1a1a1a;
+  transition: all 0.3s ease-in-out;
+}
+
+.col-card {
+  position: absolute;
+  bottom: 16px;
+  left: 12px;
+  right: 12px;
+  background: #fff;
+  border: 0.5px solid #ccc;
+  border-radius: 10px;
+  padding: 14px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.25s, transform 0.25s;
+  pointer-events: none;
+}
+
+.domain-col:hover .col-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-title {
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 6px;
+  font-family: monospace;
+}
+
+.card-desc {
+  font-size: 12px;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 10px;
 }

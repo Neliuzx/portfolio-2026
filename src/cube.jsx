@@ -4,7 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import GUI from 'lil-gui'
 import gsap from 'gsap'
 
-const Scene = () => {
+const Scene = ({ setActiveOverlay }) => {
   const canvasRef = useRef(null)
 
   useEffect(() => {
@@ -35,12 +35,12 @@ const Scene = () => {
     const textureLoader = new THREE.TextureLoader()
 
     const materials = [
-      new THREE.MeshBasicMaterial({ map: textureLoader.load('/textures/img-1.png') }),
-      new THREE.MeshBasicMaterial({ map: textureLoader.load('/textures/face2.jpg') }),
-      new THREE.MeshBasicMaterial({ map: textureLoader.load('/textures/face3.jpg') }),
-      new THREE.MeshBasicMaterial({ map: textureLoader.load('/textures/face4.jpg') }),
-      new THREE.MeshBasicMaterial({ map: textureLoader.load('/textures/face5.jpg') }),
-      new THREE.MeshBasicMaterial({ map: textureLoader.load('/textures/face6.jpg') }),
+      new THREE.MeshBasicMaterial({ map: textureLoader.load('/textures/Contact.png') }),
+      new THREE.MeshBasicMaterial({ map: textureLoader.load('/textures/About Me.png') }),
+      new THREE.MeshBasicMaterial({ map: textureLoader.load('/textures/Github.png') }),
+      new THREE.MeshBasicMaterial({ map: textureLoader.load('/textures/Projects.png') }), 
+      new THREE.MeshBasicMaterial({ map: textureLoader.load('/textures/Skills.png') }),
+      new THREE.MeshBasicMaterial({ map: textureLoader.load('/textures/Sandbox.png') }),
     ]
 
     const mesh = new THREE.Mesh(geometry, materials)
@@ -59,7 +59,19 @@ const Scene = () => {
 
       if(intersects.length > 0) {
         const faceIndex = Math.floor(intersects[0].faceIndex / (geometry.parameters.widthSegments * 2))
-        console.log('face cliquée :', faceIndex)
+        // faceIndex 0-1   devant droite (avec texture projet)
+        // faceIndex 2-3   derrière gauche
+        // faceIndex 4-5   dessus
+        // faceIndex 6-7   dessous
+        // faceIndex 8-9   devant gauche
+        // faceIndex 10-11 derrière droite
+        console.log(faceIndex)
+        if(faceIndex === 6 || faceIndex === 7) {
+          setActiveOverlay('projects')
+        }else if(faceIndex === 8 || faceIndex === 9){
+          setActiveOverlay('skills')
+        }       
+
       }
     })
 
