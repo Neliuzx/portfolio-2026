@@ -70,6 +70,8 @@ const Scene = ({ setActiveOverlay }) => {
           setActiveOverlay('projects')
         }else if(faceIndex === 8 || faceIndex === 9){
           setActiveOverlay('skills')
+        }else if(faceIndex === 5 || faceIndex === 4){
+          setActiveOverlay('github')
         }       
 
       }

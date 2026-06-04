@@ -9,6 +9,7 @@ import Navbar from './ui/Navbar'
 import LoadScreen from './ui/LoadScreen.jsx'
 import ProjectsOverlay from './overlays/ProjectsOverlay'
 import SkillsOverlay from './overlays/SkillsOverlay'
+import GithubOverlay from './overlays/GithubOverlay'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
   return (
     <>
     <LoadScreen setIsLoaded={setIsLoaded}/>
+    <GithubOverlay activeOverlay={activeOverlay} setActiveOverlay={setActiveOverlay}/>
     <ProjectsOverlay activeOverlay={activeOverlay} setActiveOverlay={setActiveOverlay}/>
     <SkillsOverlay activeOverlay={activeOverlay} setActiveOverlay={setActiveOverlay}/>
     <Navbar isLoaded={isLoaded}/>
