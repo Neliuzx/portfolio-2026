@@ -59,6 +59,7 @@ const Scene = ({ setActiveOverlay }) => {
 
       if(intersects.length > 0) {
         const faceIndex = Math.floor(intersects[0].faceIndex / (geometry.parameters.widthSegments * 2))
+        console.log(faceIndex)
         // faceIndex 0-1   devant droite (avec texture projet)
         // faceIndex 2-3   derrière gauche
         // faceIndex 4-5   dessus
@@ -72,7 +73,9 @@ const Scene = ({ setActiveOverlay }) => {
           setActiveOverlay('skills')
         }else if(faceIndex === 5 || faceIndex === 4){
           setActiveOverlay('github')
-        }       
+        }else if(faceIndex === 0 || faceIndex === 1){
+          setActiveOverlay('contact')
+        }    
 
       }
     })

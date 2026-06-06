@@ -10,6 +10,8 @@ import LoadScreen from './ui/LoadScreen.jsx'
 import ProjectsOverlay from './overlays/ProjectsOverlay'
 import SkillsOverlay from './overlays/SkillsOverlay'
 import GithubOverlay from './overlays/GithubOverlay'
+import ContactOverlay from './overlays/ContactOverlay'
+import SocialBar from './ui/SocialBar'
 
 function App() {
 
@@ -19,10 +21,12 @@ function App() {
   return (
     <>
     <LoadScreen setIsLoaded={setIsLoaded}/>
+    <ContactOverlay activeOverlay={activeOverlay} setActiveOverlay={setActiveOverlay}/>
     <GithubOverlay activeOverlay={activeOverlay} setActiveOverlay={setActiveOverlay}/>
     <ProjectsOverlay activeOverlay={activeOverlay} setActiveOverlay={setActiveOverlay}/>
     <SkillsOverlay activeOverlay={activeOverlay} setActiveOverlay={setActiveOverlay}/>
-    <Navbar isLoaded={isLoaded}/>
+    <Navbar isLoaded={isLoaded} activeOverlay={activeOverlay} setActiveOverlay={setActiveOverlay}/>
+    <SocialBar activeOverlay={activeOverlay} setActiveOverlay={setActiveOverlay}/>
     <Cube setActiveOverlay={setActiveOverlay}/>
     <Controls/>
     </>
