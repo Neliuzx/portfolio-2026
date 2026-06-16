@@ -17,8 +17,7 @@ function ContactOverlay ({ activeOverlay, setActiveOverlay }) {
                 <div className="contact-left">
                 <ExitButton setActiveOverlay={setActiveOverlay}/>
                 <SocialBar/>
-                <h1>LET'S<br/>COLLABORATE<br/>TOGETHER</h1>
-                
+                <h1>LET'S<br/>COLLABORATE<br/>TOGETHER</h1>               
                 </div>
                 <div className="contact-right">
                 <form className="contact-form">

@@ -75,6 +75,8 @@ const Scene = ({ setActiveOverlay }) => {
           setActiveOverlay('github')
         }else if(faceIndex === 0 || faceIndex === 1){
           setActiveOverlay('contact')
+        }else if(faceIndex === 2 || faceIndex === 3){
+          setActiveOverlay('aboutme')
         }    
 
       }
