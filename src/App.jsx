@@ -13,6 +13,7 @@ import GithubOverlay from './overlays/GithubOverlay'
 import ContactOverlay from './overlays/ContactOverlay'
 import SocialBar from './ui/SocialBar'
 import AboutmeOverlay from './overlays/AboutmeOverlay'
+import SandboxOverlay from './overlays/Sandboxoverlay'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
     <>
     <LoadScreen setIsLoaded={setIsLoaded}/>
     <ContactOverlay activeOverlay={activeOverlay} setActiveOverlay={setActiveOverlay}/>
+    <SandboxOverlay activeOverlay={activeOverlay} setActiveOverlay={setActiveOverlay}/>
     <AboutmeOverlay activeOverlay={activeOverlay} setActiveOverlay={setActiveOverlay}/>
     <GithubOverlay activeOverlay={activeOverlay} setActiveOverlay={setActiveOverlay}/>
     <ProjectsOverlay activeOverlay={activeOverlay} setActiveOverlay={setActiveOverlay}/>
