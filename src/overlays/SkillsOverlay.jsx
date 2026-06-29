@@ -16,29 +16,31 @@ const jsCode = `const cube = new THREE
   .BoxGeometry()
 scene.add(cube)`
 
+
+const C = '?color=%23EDEDED'
+
 const tools = [
-  { name: 'Illustrator', logo: './src/icons/illustrator.svg', link: 'https://www.adobe.com/products/illustrator.html' },
-  { name: 'Photoshop', logo: './src/icons/photoshop.svg', link: 'https://www.adobe.com/products/photoshop.html' },
-  { name: 'Lightroom', logo: './src/icons/lightroom.svg', link: 'https://www.adobe.com/products/photoshop-lightroom.html' },
-  { name: 'Figma', logo: './src/icons/figma.svg', link: 'https://www.figma.com' },
-  { name: 'Canva', logo: './src/icons/canva.svg', link: 'https://www.canva.com' },
-  { name: 'Dribbble', logo: './src/icons/dribbble.svg', link: 'https://dribbble.com' },
-  { name: 'VS Code', logo: './src/icons/vscode.svg', link: 'https://code.visualstudio.com' },
-  { name: 'Git', logo: './src/icons/git.svg', link: 'https://git-scm.com' },
-  { name: 'GitHub', logo: './src/icons/github_dark.svg', link: 'https://github.com' },
-  { name: 'Vite', logo: './src/icons/vite.svg', link: 'https://vitejs.dev' },
-  { name: 'Nginx', logo: './src/icons/nginx.svg', link: 'https://nginx.org' },
-  { name: 'WordPress', logo: './src/icons/wordpress.svg', link: 'https://wordpress.org' },
-  { name: 'Webflow', logo: './src/icons/webflow.svg', link: 'https://webflow.com' },
-  { name: 'Shopify', logo: './src/icons/shopify.svg', link: 'https://www.shopify.com' },
-  { name: 'Notion', logo: './src/icons/notion.svg', link: 'https://www.notion.so' },
-  { name: 'Trello', logo: './src/icons/trello.svg', link: 'https://trello.com' },
-  { name: 'Google Analytics', logo: './src/icons/google-analytics.svg', link: 'https://analytics.google.com' },
-  { name: 'Cursor', logo: './src/icons/cursor_dark.svg', link: 'https://cursor.com' },
-  { name: 'Lottiefiles', logo: './src/icons/lottiefiles.svg', link: 'https://lottiefiles.com' },
-  { name: 'Claude AI', logo: './src/icons/claude-ai-icon.svg', link: 'https://claude.ai' },
-  { name: 'Gmail', logo: './src/icons/gmail.svg', link: 'https://mail.google.com' },
-  { name: 'Adobe Fonts', logo: './src/icons/fonts.svg', link: 'https://fonts.adobe.com/#old_hash=&from_ims=true?client_id=TypeKit2&api=logout' },
+  { name: 'Illustrator', logo: `https://api.iconify.design/skill-icons/illustrator.svg`, link: 'https://www.adobe.com/products/illustrator.html' },
+  { name: 'Photoshop', logo: `https://api.iconify.design/skill-icons/photoshop.svg`, link: 'https://www.adobe.com/products/photoshop.html' },
+  { name: 'Lightroom', logo: `https://api.iconify.design/simple-icons/adobelightroom.svg${C}`, link: 'https://www.adobe.com/products/photoshop-lightroom.html' },
+  { name: 'Figma', logo: `https://api.iconify.design/skill-icons/figma-dark.svg`, link: 'https://www.figma.com' },
+  { name: 'Canva', logo: `https://api.iconify.design/simple-icons/canva.svg${C}`, link: 'https://www.canva.com' },
+  { name: 'Dribbble', logo: `https://api.iconify.design/simple-icons/dribbble.svg${C}`, link: 'https://dribbble.com' },
+  { name: 'VS Code', logo: `https://api.iconify.design/skill-icons/vscode-dark.svg`, link: 'https://code.visualstudio.com' },
+  { name: 'Git', logo: `https://api.iconify.design/skill-icons/git.svg`, link: 'https://git-scm.com' },
+  { name: 'GitHub', logo: `https://api.iconify.design/simple-icons/github.svg${C}`, link: 'https://github.com' },
+  { name: 'Vite', logo: `https://api.iconify.design/skill-icons/vite-dark.svg`, link: 'https://vitejs.dev' },
+  { name: 'Nginx', logo: `https://api.iconify.design/skill-icons/nginx.svg`, link: 'https://nginx.org' },
+  { name: 'WordPress', logo: `https://api.iconify.design/skill-icons/wordpress.svg`, link: 'https://wordpress.org' },
+  { name: 'Webflow', logo: `https://api.iconify.design/simple-icons/webflow.svg${C}`, link: 'https://webflow.com' },
+  { name: 'Shopify', logo: `https://api.iconify.design/simple-icons/shopify.svg${C}`, link: 'https://www.shopify.com' },
+  { name: 'Notion', logo: `https://api.iconify.design/simple-icons/notion.svg${C}`, link: 'https://www.notion.so' },
+  { name: 'Google Analytics', logo: `https://api.iconify.design/simple-icons/googleanalytics.svg${C}`, link: 'https://analytics.google.com' },
+  { name: 'Cursor', logo: `https://api.iconify.design/simple-icons/cursor.svg${C}`, link: 'https://cursor.com' },
+  { name: 'Lottiefiles', logo: `https://api.iconify.design/simple-icons/lottiefiles.svg${C}`, link: 'https://lottiefiles.com' },
+  { name: 'Claude AI', logo: `https://api.iconify.design/simple-icons/anthropic.svg${C}`, link: 'https://claude.ai' },
+  { name: 'Gmail', logo: `https://api.iconify.design/skill-icons/gmail-light.svg`, link: 'https://mail.google.com' },
+  { name: 'Adobe Fonts', logo: `https://api.iconify.design/simple-icons/adobefonts.svg${C}`, link: 'https://fonts.adobe.com/#old_hash=&from_ims=true?client_id=TypeKit2&api=logout' },
 ]
 
 const domains = [
@@ -121,13 +123,13 @@ function SkillsOverlay({ activeOverlay, setActiveOverlay }) {
         {activeCategory === 'Languages' && (
           <div className="languages-content">
             <div className="lang-row">
-              <img src="./src/icons/html5.svg" alt="HTML" className="lang-logo" />
+              <img src="https://api.iconify.design/skill-icons/html.svg" alt="HTML" className="lang-logo" />
               <Terminal code={htmlCode} isMobile={isMobile} />
             </div>
 
             <div className="css-row">
               <div className="lang-row reverse">
-                <img src="./src/icons/css_old.svg" alt="CSS" className="lang-logo" />
+                <img src="https://api.iconify.design/skill-icons/css.svg" alt="CSS" className="lang-logo" />
                 <Terminal code={cssCode} isMobile={isMobile} />
               </div>
               <div className="frameworks-container">
@@ -135,13 +137,13 @@ function SkillsOverlay({ activeOverlay, setActiveOverlay }) {
                 <div className="frameworks-row">
                   <div className="icon-framework">
                     <a href="https://tailwindcss.com/" target="blank">
-                      <img src="./src/icons/tailwindcss.svg" className="frameworks-icons" height="40px" alt="Logo Tailwind" />
+                      <img src="https://api.iconify.design/skill-icons/tailwindcss-dark.svg" className="frameworks-icons" height="40px" alt="Logo Tailwind" />
                     </a>
                     <label>Tailwind</label>
                   </div>
                   <div className="icon-framework">
                     <a href="https://getbootstrap.com/" target="blank">
-                      <img src="./src/icons/bootstrap.svg" className="frameworks-icons" height="40px" alt="Logo Bootstrap" />
+                      <img src="https://api.iconify.design/skill-icons/bootstrap.svg" className="frameworks-icons" height="40px" alt="Logo Bootstrap" />
                     </a>
                     <label>Bootstrap</label>
                   </div>
@@ -151,7 +153,7 @@ function SkillsOverlay({ activeOverlay, setActiveOverlay }) {
 
             <div className="javascript-row">
               <div className="lang-row">
-                <img src="./src/icons/javascript.svg" alt="JS" className="lang-logo" />
+                <img src="https://api.iconify.design/skill-icons/javascript.svg" alt="JS" className="lang-logo" />
                 <Terminal code={jsCode} isMobile={isMobile} />
               </div>
               <div className="frameworks-container">
@@ -159,19 +161,19 @@ function SkillsOverlay({ activeOverlay, setActiveOverlay }) {
                 <div className="frameworks-row">
                   <div className="icon-framework">
                     <a href="https://react.dev" target="blank">
-                      <img src="./src/icons/react_light.svg" className="frameworks-icons" height="40px" alt="Logo React" />
+                      <img src="https://api.iconify.design/skill-icons/react-dark.svg" className="frameworks-icons" height="40px" alt="Logo React" />
                     </a>
                     <label>React</label>
                   </div>
                   <div className="icon-framework">
                     <a href="https://threejs.org/" target="blank">
-                      <img src="./src/icons/threejs-light.svg" className="frameworks-icons" height="40px" alt="Logo Threejs" />
+                      <img src="https://api.iconify.design/skill-icons/threejs-dark.svg" className="frameworks-icons" height="40px" alt="Logo Threejs" />
                     </a>
                     <label>ThreeJS</label>
                   </div>
                   <div className="icon-framework">
                     <a href="https://www.chartjs.org/" target="blank">
-                      <img src="./src/icons/chartjs.svg" className="frameworks-icons" height="40px" alt="Logo Chartjs" />
+                      <img src="https://api.iconify.design/simple-icons/chartdotjs.svg?color=%23FF6384" className="frameworks-icons" height="40px" alt="Logo Chartjs" />
                     </a>
                     <label>ChartJS</label>
                   </div>
