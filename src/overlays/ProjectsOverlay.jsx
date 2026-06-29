@@ -1,13 +1,15 @@
 import { useState, useRef, useEffect } from 'react'
 import '../App.css'
 import ExitButton from '../ui/ExitButton'
+import logoNeliuzx from '../assets/Logo Neliuzx.svg'
+import logoCC from '../assets/cropped-Logo-Clic-et-Copie-copie.png'
 
 const projects = [
-  { id: 'neliuzx', title: 'My Portfolio', year: '2026', stack: 'React · Three.js · GSAP', src: 'https://picsum.photos/seed/a/900/1100' },
-  { id: 'projet2', title: 'projet2', year: '2025', stack: 'React · Node · MySQL', src: 'https://picsum.photos/seed/b/900/1100' },
-  { id: 'clic', title: 'Clic & Copie', year: '2025', stack: 'WordPress · Elementor', src: 'https://picsum.photos/seed/c/900/1100' },
-  { id: 'projet4', title: 'projet4', year: '2025', stack: 'Web Audio · Claude API', src: 'https://picsum.photos/seed/d/900/1100' },
-  { id: 'projet5', title: 'projet5', year: '2024', stack: 'OSINT · Investigation', src: 'https://picsum.photos/seed/e/900/1100' },
+  { id: 'neliuzx', title: 'My Portfolio', year: '2026', stack: 'React · Three.js · GSAP', src: logoNeliuzx, link: 'https://github.com/Neliuzx/portfolio-2026/', logo: true},
+  { id: 'projet2', title: 'Spotify Dashboard', year: '2026', stack: 'JS', src: 'https://cdn.simpleicons.org/spotify', link: 'https://github.com/Neliuzx/spotify-dashboard', logo: true},
+  { id: 'clic', title: 'Clic & Copie', year: '2026', stack: 'WordPress · Elementor', src: logoCC, link: 'https://clicetcopie.fr', logo: true },
+  { id: 'projet4', title: 'Valorant Dashboard', year: '2026', stack: 'JS', src: 'https://cdn.simpleicons.org/valorant', link: 'https://github.com/Neliuzx/Valorant-Dashboard', logo: true },
+  { id: 'projet5', title: 'Todo list', year: '2026', stack: 'JS', src: 'https://api.iconify.design/lucide/list-todo.svg?color=%23EDEDED&width=200', link: 'https://github.com/Neliuzx/todolist-js', logo: true },
 ]
 
 function ProjectsOverlay ({ activeOverlay, setActiveOverlay }) {
@@ -106,7 +108,12 @@ function ProjectsOverlay ({ activeOverlay, setActiveOverlay }) {
                 onMouseEnter={() => setActive(index)}
                 onClick={() => setOpened(project)}
               >
-                <img src={project.src} alt={project.title} draggable={false} />
+                <img
+                  className={`deck-card-img ${project.logo ? 'is-logo' : ''}`}
+                  src={project.src}
+                  alt={project.title}
+                  draggable={false}
+                />
                 <span>{project.title}</span>
               </button>
             ))}
@@ -120,7 +127,7 @@ function ProjectsOverlay ({ activeOverlay, setActiveOverlay }) {
             <span>{projects[active].stack}</span>
             <span>{projects[active].year}</span>
           </div>
-          <button onClick={() => setOpened(projects[active])}>OPEN CASE →</button>
+          <button onClick={() => window.open(projects[active].link, '_blank', 'noopener,noreferrer')}>OPEN →</button>
         </div>
       </div>
 

@@ -955,7 +955,14 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   pointer-events: none;
+}
+.deck-card-img.is-logo {
+  object-fit: contain;
+  object-position: center;
+  padding: 48px;
+  background: #fff;
 }
 .deck-card span {
   position: absolute;

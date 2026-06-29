@@ -32,7 +32,7 @@ function GithubOverlay({ activeOverlay, setActiveOverlay }) {
       const userRes = await fetch(`https://api.github.com/users/${username}`)
       if(!userRes.ok) { setState('error'); return }
       const user = await userRes.json()
-
+ 
       const reposRes = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
       const repos = await reposRes.json()
 
